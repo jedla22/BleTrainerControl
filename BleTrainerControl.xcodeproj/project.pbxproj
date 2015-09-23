@@ -1,0 +1,679 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C78700841BB2D68C007BC635 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78700831BB2D68C007BC635 /* main.m */; };
+		C78700871BB2D68C007BC635 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78700861BB2D68C007BC635 /* AppDelegate.m */; };
+		C78700901BB2D68C007BC635 /* BleTrainerControl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C787008E1BB2D68C007BC635 /* BleTrainerControl.xcdatamodeld */; };
+		C78700921BB2D68C007BC635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C78700911BB2D68C007BC635 /* Assets.xcassets */; };
+		C78700951BB2D68C007BC635 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78700931BB2D68C007BC635 /* LaunchScreen.storyboard */; };
+		C78700BF1BB2D6EC007BC635 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78700B91BB2D6EC007BC635 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C78700C01BB2D6EC007BC635 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78700BA1BB2D6EC007BC635 /* ViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C78700C11BB2D6EC007BC635 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78700BC1BB2D6EC007BC635 /* ConnectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C78700C21BB2D6EC007BC635 /* ConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78700BD1BB2D6EC007BC635 /* ConnectionViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C78700C31BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78700BE1BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACD11BB2D79F0002EB58 /* CalibrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACCF1BB2D79F0002EB58 /* CalibrationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACD21BB2D79F0002EB58 /* CalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACD01BB2D79F0002EB58 /* CalibrationViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACD61BB2D7A60002EB58 /* BasicResistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACD41BB2D7A60002EB58 /* BasicResistanceViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACD71BB2D7A60002EB58 /* BasicResistanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACD51BB2D7A60002EB58 /* BasicResistanceViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACDB1BB2D7AD0002EB58 /* TargetPowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACD91BB2D7AD0002EB58 /* TargetPowerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACDC1BB2D7AD0002EB58 /* TargetPowerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACDA1BB2D7AD0002EB58 /* TargetPowerViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACE01BB2D7B30002EB58 /* WindResistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACDE1BB2D7B30002EB58 /* WindResistanceViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACE11BB2D7B30002EB58 /* WindResistanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACDF1BB2D7B30002EB58 /* WindResistanceViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACE51BB2D7C00002EB58 /* TrackResistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACE31BB2D7C00002EB58 /* TrackResistanceViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACE61BB2D7C00002EB58 /* TrackResistanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACE41BB2D7C00002EB58 /* TrackResistanceViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACEB1BB2D7DE0002EB58 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACEA1BB2D7DE0002EB58 /* Utils.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACEE1BB2D7EB0002EB58 /* BTLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACED1BB2D7EB0002EB58 /* BTLEManager.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACF41BB2D84C0002EB58 /* BTLETrainerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACF31BB2D84C0002EB58 /* BTLETrainerManager.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACF61BB2DB3F0002EB58 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D6ACF51BB2DB3F0002EB58 /* CoreBluetooth.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C787009C1BB2D68C007BC635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C78700771BB2D68C007BC635 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C787007E1BB2D68C007BC635;
+			remoteInfo = BleTrainerControl;
+		};
+		C78700A71BB2D68D007BC635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C78700771BB2D68C007BC635 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C787007E1BB2D68C007BC635;
+			remoteInfo = BleTrainerControl;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C787007F1BB2D68C007BC635 /* BleTrainerControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleTrainerControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C78700831BB2D68C007BC635 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C78700851BB2D68C007BC635 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C78700861BB2D68C007BC635 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C787008F1BB2D68C007BC635 /* BleTrainerControl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BleTrainerControl.xcdatamodel; sourceTree = "<group>"; };
+		C78700911BB2D68C007BC635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C78700941BB2D68C007BC635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C78700961BB2D68C007BC635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C787009B1BB2D68C007BC635 /* BleTrainerControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BleTrainerControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C78700A61BB2D68D007BC635 /* BleTrainerControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BleTrainerControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C78700B81BB2D6EC007BC635 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C78700B91BB2D6EC007BC635 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C78700BA1BB2D6EC007BC635 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		C78700BB1BB2D6EC007BC635 /* ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionViewController.h; sourceTree = "<group>"; };
+		C78700BC1BB2D6EC007BC635 /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
+		C78700BD1BB2D6EC007BC635 /* ConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController.xib; sourceTree = "<group>"; };
+		C78700BE1BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController_iPhone.xib; sourceTree = "<group>"; };
+		C7D6ACCE1BB2D79F0002EB58 /* CalibrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationViewController.h; sourceTree = "<group>"; };
+		C7D6ACCF1BB2D79F0002EB58 /* CalibrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationViewController.m; sourceTree = "<group>"; };
+		C7D6ACD01BB2D79F0002EB58 /* CalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationViewController.xib; sourceTree = "<group>"; };
+		C7D6ACD31BB2D7A60002EB58 /* BasicResistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicResistanceViewController.h; sourceTree = "<group>"; };
+		C7D6ACD41BB2D7A60002EB58 /* BasicResistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicResistanceViewController.m; sourceTree = "<group>"; };
+		C7D6ACD51BB2D7A60002EB58 /* BasicResistanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicResistanceViewController.xib; sourceTree = "<group>"; };
+		C7D6ACD81BB2D7AD0002EB58 /* TargetPowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetPowerViewController.h; sourceTree = "<group>"; };
+		C7D6ACD91BB2D7AD0002EB58 /* TargetPowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetPowerViewController.m; sourceTree = "<group>"; };
+		C7D6ACDA1BB2D7AD0002EB58 /* TargetPowerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetPowerViewController.xib; sourceTree = "<group>"; };
+		C7D6ACDD1BB2D7B30002EB58 /* WindResistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindResistanceViewController.h; sourceTree = "<group>"; };
+		C7D6ACDE1BB2D7B30002EB58 /* WindResistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindResistanceViewController.m; sourceTree = "<group>"; };
+		C7D6ACDF1BB2D7B30002EB58 /* WindResistanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindResistanceViewController.xib; sourceTree = "<group>"; };
+		C7D6ACE21BB2D7C00002EB58 /* TrackResistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackResistanceViewController.h; sourceTree = "<group>"; };
+		C7D6ACE31BB2D7C00002EB58 /* TrackResistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackResistanceViewController.m; sourceTree = "<group>"; };
+		C7D6ACE41BB2D7C00002EB58 /* TrackResistanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackResistanceViewController.xib; sourceTree = "<group>"; };
+		C7D6ACE91BB2D7DE0002EB58 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		C7D6ACEA1BB2D7DE0002EB58 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		C7D6ACEC1BB2D7EB0002EB58 /* BTLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTLEManager.h; sourceTree = "<group>"; };
+		C7D6ACED1BB2D7EB0002EB58 /* BTLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTLEManager.m; sourceTree = "<group>"; };
+		C7D6ACF11BB2D8440002EB58 /* BTLEConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTLEConstants.h; sourceTree = "<group>"; };
+		C7D6ACF21BB2D84C0002EB58 /* BTLETrainerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTLETrainerManager.h; sourceTree = "<group>"; };
+		C7D6ACF31BB2D84C0002EB58 /* BTLETrainerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTLETrainerManager.m; sourceTree = "<group>"; };
+		C7D6ACF51BB2DB3F0002EB58 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C787007C1BB2D68C007BC635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7D6ACF61BB2DB3F0002EB58 /* CoreBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C78700981BB2D68C007BC635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C78700A31BB2D68D007BC635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C78700761BB2D68C007BC635 = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACF51BB2DB3F0002EB58 /* CoreBluetooth.framework */,
+				C78700811BB2D68C007BC635 /* BleTrainerControl */,
+				C78700801BB2D68C007BC635 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C78700801BB2D68C007BC635 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C787007F1BB2D68C007BC635 /* BleTrainerControl.app */,
+				C787009B1BB2D68C007BC635 /* BleTrainerControlTests.xctest */,
+				C78700A61BB2D68D007BC635 /* BleTrainerControlUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C78700811BB2D68C007BC635 /* BleTrainerControl */ = {
+			isa = PBXGroup;
+			children = (
+				C78700851BB2D68C007BC635 /* AppDelegate.h */,
+				C78700861BB2D68C007BC635 /* AppDelegate.m */,
+				C78700B81BB2D6EC007BC635 /* ViewController.h */,
+				C78700B91BB2D6EC007BC635 /* ViewController.m */,
+				C78700BA1BB2D6EC007BC635 /* ViewController.xib */,
+				C78700BB1BB2D6EC007BC635 /* ConnectionViewController.h */,
+				C78700BC1BB2D6EC007BC635 /* ConnectionViewController.m */,
+				C78700BD1BB2D6EC007BC635 /* ConnectionViewController.xib */,
+				C78700BE1BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib */,
+				C7D6ACC81BB2D74D0002EB58 /* Modals */,
+				C7D6ACE81BB2D7CF0002EB58 /* Utils */,
+				C7D6ACE71BB2D7CB0002EB58 /* BTLE */,
+				C78700911BB2D68C007BC635 /* Assets.xcassets */,
+				C78700931BB2D68C007BC635 /* LaunchScreen.storyboard */,
+				C78700961BB2D68C007BC635 /* Info.plist */,
+				C787008E1BB2D68C007BC635 /* BleTrainerControl.xcdatamodeld */,
+				C78700821BB2D68C007BC635 /* Supporting Files */,
+			);
+			path = BleTrainerControl;
+			sourceTree = "<group>";
+		};
+		C78700821BB2D68C007BC635 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C78700831BB2D68C007BC635 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7D6ACC81BB2D74D0002EB58 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACCD1BB2D78E0002EB58 /* Calibration */,
+				C7D6ACCC1BB2D7850002EB58 /* Basic resistance */,
+				C7D6ACCB1BB2D77E0002EB58 /* Target power */,
+				C7D6ACCA1BB2D7760002EB58 /* Wind resistance */,
+				C7D6ACC91BB2D7690002EB58 /* Track resistance */,
+			);
+			name = Modals;
+			sourceTree = "<group>";
+		};
+		C7D6ACC91BB2D7690002EB58 /* Track resistance */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACE21BB2D7C00002EB58 /* TrackResistanceViewController.h */,
+				C7D6ACE31BB2D7C00002EB58 /* TrackResistanceViewController.m */,
+				C7D6ACE41BB2D7C00002EB58 /* TrackResistanceViewController.xib */,
+			);
+			name = "Track resistance";
+			sourceTree = "<group>";
+		};
+		C7D6ACCA1BB2D7760002EB58 /* Wind resistance */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACDD1BB2D7B30002EB58 /* WindResistanceViewController.h */,
+				C7D6ACDE1BB2D7B30002EB58 /* WindResistanceViewController.m */,
+				C7D6ACDF1BB2D7B30002EB58 /* WindResistanceViewController.xib */,
+			);
+			name = "Wind resistance";
+			sourceTree = "<group>";
+		};
+		C7D6ACCB1BB2D77E0002EB58 /* Target power */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACD81BB2D7AD0002EB58 /* TargetPowerViewController.h */,
+				C7D6ACD91BB2D7AD0002EB58 /* TargetPowerViewController.m */,
+				C7D6ACDA1BB2D7AD0002EB58 /* TargetPowerViewController.xib */,
+			);
+			name = "Target power";
+			sourceTree = "<group>";
+		};
+		C7D6ACCC1BB2D7850002EB58 /* Basic resistance */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACD31BB2D7A60002EB58 /* BasicResistanceViewController.h */,
+				C7D6ACD41BB2D7A60002EB58 /* BasicResistanceViewController.m */,
+				C7D6ACD51BB2D7A60002EB58 /* BasicResistanceViewController.xib */,
+			);
+			name = "Basic resistance";
+			sourceTree = "<group>";
+		};
+		C7D6ACCD1BB2D78E0002EB58 /* Calibration */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACCE1BB2D79F0002EB58 /* CalibrationViewController.h */,
+				C7D6ACCF1BB2D79F0002EB58 /* CalibrationViewController.m */,
+				C7D6ACD01BB2D79F0002EB58 /* CalibrationViewController.xib */,
+			);
+			name = Calibration;
+			sourceTree = "<group>";
+		};
+		C7D6ACE71BB2D7CB0002EB58 /* BTLE */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACEC1BB2D7EB0002EB58 /* BTLEManager.h */,
+				C7D6ACED1BB2D7EB0002EB58 /* BTLEManager.m */,
+				C7D6ACEF1BB2D7ED0002EB58 /* BTLE Trainer */,
+				C7D6ACF01BB2D8250002EB58 /* BTLE Constants */,
+			);
+			name = BTLE;
+			sourceTree = "<group>";
+		};
+		C7D6ACE81BB2D7CF0002EB58 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACE91BB2D7DE0002EB58 /* Utils.h */,
+				C7D6ACEA1BB2D7DE0002EB58 /* Utils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C7D6ACEF1BB2D7ED0002EB58 /* BTLE Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACF21BB2D84C0002EB58 /* BTLETrainerManager.h */,
+				C7D6ACF31BB2D84C0002EB58 /* BTLETrainerManager.m */,
+			);
+			name = "BTLE Trainer";
+			sourceTree = "<group>";
+		};
+		C7D6ACF01BB2D8250002EB58 /* BTLE Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C7D6ACF11BB2D8440002EB58 /* BTLEConstants.h */,
+			);
+			name = "BTLE Constants";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C787007E1BB2D68C007BC635 /* BleTrainerControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C78700AF1BB2D68D007BC635 /* Build configuration list for PBXNativeTarget "BleTrainerControl" */;
+			buildPhases = (
+				C787007B1BB2D68C007BC635 /* Sources */,
+				C787007C1BB2D68C007BC635 /* Frameworks */,
+				C787007D1BB2D68C007BC635 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BleTrainerControl;
+			productName = BleTrainerControl;
+			productReference = C787007F1BB2D68C007BC635 /* BleTrainerControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C787009A1BB2D68C007BC635 /* BleTrainerControlTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C78700B21BB2D68D007BC635 /* Build configuration list for PBXNativeTarget "BleTrainerControlTests" */;
+			buildPhases = (
+				C78700971BB2D68C007BC635 /* Sources */,
+				C78700981BB2D68C007BC635 /* Frameworks */,
+				C78700991BB2D68C007BC635 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C787009D1BB2D68C007BC635 /* PBXTargetDependency */,
+			);
+			name = BleTrainerControlTests;
+			productName = BleTrainerControlTests;
+			productReference = C787009B1BB2D68C007BC635 /* BleTrainerControlTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C78700A51BB2D68D007BC635 /* BleTrainerControlUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C78700B51BB2D68D007BC635 /* Build configuration list for PBXNativeTarget "BleTrainerControlUITests" */;
+			buildPhases = (
+				C78700A21BB2D68D007BC635 /* Sources */,
+				C78700A31BB2D68D007BC635 /* Frameworks */,
+				C78700A41BB2D68D007BC635 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C78700A81BB2D68D007BC635 /* PBXTargetDependency */,
+			);
+			name = BleTrainerControlUITests;
+			productName = BleTrainerControlUITests;
+			productReference = C78700A61BB2D68D007BC635 /* BleTrainerControlUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C78700771BB2D68C007BC635 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Kinomap;
+				TargetAttributes = {
+					C787007E1BB2D68C007BC635 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					C787009A1BB2D68C007BC635 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = C787007E1BB2D68C007BC635;
+					};
+					C78700A51BB2D68D007BC635 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = C787007E1BB2D68C007BC635;
+					};
+				};
+			};
+			buildConfigurationList = C787007A1BB2D68C007BC635 /* Build configuration list for PBXProject "BleTrainerControl" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C78700761BB2D68C007BC635;
+			productRefGroup = C78700801BB2D68C007BC635 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C787007E1BB2D68C007BC635 /* BleTrainerControl */,
+				C787009A1BB2D68C007BC635 /* BleTrainerControlTests */,
+				C78700A51BB2D68D007BC635 /* BleTrainerControlUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C787007D1BB2D68C007BC635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7D6ACD71BB2D7A60002EB58 /* BasicResistanceViewController.xib in Resources */,
+				C7D6ACDC1BB2D7AD0002EB58 /* TargetPowerViewController.xib in Resources */,
+				C78700C21BB2D6EC007BC635 /* ConnectionViewController.xib in Resources */,
+				C7D6ACE61BB2D7C00002EB58 /* TrackResistanceViewController.xib in Resources */,
+				C7D6ACE11BB2D7B30002EB58 /* WindResistanceViewController.xib in Resources */,
+				C78700951BB2D68C007BC635 /* LaunchScreen.storyboard in Resources */,
+				C78700C01BB2D6EC007BC635 /* ViewController.xib in Resources */,
+				C7D6ACD21BB2D79F0002EB58 /* CalibrationViewController.xib in Resources */,
+				C78700C31BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib in Resources */,
+				C78700921BB2D68C007BC635 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C78700991BB2D68C007BC635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C78700A41BB2D68D007BC635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C787007B1BB2D68C007BC635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C78700871BB2D68C007BC635 /* AppDelegate.m in Sources */,
+				C7D6ACEB1BB2D7DE0002EB58 /* Utils.m in Sources */,
+				C7D6ACDB1BB2D7AD0002EB58 /* TargetPowerViewController.m in Sources */,
+				C78700841BB2D68C007BC635 /* main.m in Sources */,
+				C78700C11BB2D6EC007BC635 /* ConnectionViewController.m in Sources */,
+				C7D6ACD61BB2D7A60002EB58 /* BasicResistanceViewController.m in Sources */,
+				C7D6ACE51BB2D7C00002EB58 /* TrackResistanceViewController.m in Sources */,
+				C7D6ACD11BB2D79F0002EB58 /* CalibrationViewController.m in Sources */,
+				C78700BF1BB2D6EC007BC635 /* ViewController.m in Sources */,
+				C7D6ACF41BB2D84C0002EB58 /* BTLETrainerManager.m in Sources */,
+				C7D6ACE01BB2D7B30002EB58 /* WindResistanceViewController.m in Sources */,
+				C7D6ACEE1BB2D7EB0002EB58 /* BTLEManager.m in Sources */,
+				C78700901BB2D68C007BC635 /* BleTrainerControl.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C78700971BB2D68C007BC635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C78700A21BB2D68D007BC635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C787009D1BB2D68C007BC635 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C787007E1BB2D68C007BC635 /* BleTrainerControl */;
+			targetProxy = C787009C1BB2D68C007BC635 /* PBXContainerItemProxy */;
+		};
+		C78700A81BB2D68D007BC635 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C787007E1BB2D68C007BC635 /* BleTrainerControl */;
+			targetProxy = C78700A71BB2D68D007BC635 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C78700931BB2D68C007BC635 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C78700941BB2D68C007BC635 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C78700AD1BB2D68D007BC635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C78700AE1BB2D68D007BC635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C78700B01BB2D68D007BC635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				INFOPLIST_FILE = BleTrainerControl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kinomap.BleTrainerControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C78700B11BB2D68D007BC635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				INFOPLIST_FILE = BleTrainerControl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kinomap.BleTrainerControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C78700B31BB2D68D007BC635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BleTrainerControlTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kinomap.BleTrainerControlTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BleTrainerControl.app/BleTrainerControl";
+			};
+			name = Debug;
+		};
+		C78700B41BB2D68D007BC635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BleTrainerControlTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kinomap.BleTrainerControlTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BleTrainerControl.app/BleTrainerControl";
+			};
+			name = Release;
+		};
+		C78700B61BB2D68D007BC635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BleTrainerControlUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kinomap.BleTrainerControlUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BleTrainerControl;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C78700B71BB2D68D007BC635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BleTrainerControlUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kinomap.BleTrainerControlUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BleTrainerControl;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C787007A1BB2D68C007BC635 /* Build configuration list for PBXProject "BleTrainerControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C78700AD1BB2D68D007BC635 /* Debug */,
+				C78700AE1BB2D68D007BC635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C78700AF1BB2D68D007BC635 /* Build configuration list for PBXNativeTarget "BleTrainerControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C78700B01BB2D68D007BC635 /* Debug */,
+				C78700B11BB2D68D007BC635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C78700B21BB2D68D007BC635 /* Build configuration list for PBXNativeTarget "BleTrainerControlTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C78700B31BB2D68D007BC635 /* Debug */,
+				C78700B41BB2D68D007BC635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C78700B51BB2D68D007BC635 /* Build configuration list for PBXNativeTarget "BleTrainerControlUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C78700B61BB2D68D007BC635 /* Debug */,
+				C78700B71BB2D68D007BC635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C787008E1BB2D68C007BC635 /* BleTrainerControl.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C787008F1BB2D68C007BC635 /* BleTrainerControl.xcdatamodel */,
+			);
+			currentVersion = C787008F1BB2D68C007BC635 /* BleTrainerControl.xcdatamodel */;
+			path = BleTrainerControl.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C78700771BB2D68C007BC635 /* Project object */;
+}
