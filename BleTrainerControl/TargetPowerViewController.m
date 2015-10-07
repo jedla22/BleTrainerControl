@@ -32,6 +32,14 @@
     [self onSliderValueChanged:targetPowerSlider];
     
     [self.navigationItem setRightBarButtonItem:[[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(onCloseButton:)] autorelease]];
+    
+    Utils *utils = [[[Utils alloc] init] autorelease];
+    NSArray *buttonsArray = [NSArray arrayWithObjects:sendButton, nil];
+    for(UIButton *btn in buttonsArray)
+    {
+        [btn setBackgroundImage:[utils imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[utils imageWithColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]] forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

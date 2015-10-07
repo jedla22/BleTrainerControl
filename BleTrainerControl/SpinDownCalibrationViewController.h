@@ -18,17 +18,6 @@
     
     IBOutlet UIButton *spinDownButton;
     
-    IBOutlet UILabel *targetSpeedLabel;
-    IBOutlet UILabel *targetSpinDownTimeLabel;
-    IBOutlet UILabel *currentSpeedLabel;
-    IBOutlet UILabel *currentTemperatureLabel;
-    IBOutlet UILabel *speedConditionLabel;
-    IBOutlet UILabel *spinDownCalibrationStatusLabel;
-    
-    IBOutlet UILabel *spinDownCalibrationResponseLabel;
-    IBOutlet UILabel *temperatureResponseLabel;
-    IBOutlet UILabel *spinDownTimeResponseLabel;
-    
     IBOutlet UITableView *calibrationTableView;
 }
 

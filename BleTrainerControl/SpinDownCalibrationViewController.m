@@ -49,6 +49,14 @@
     
     [calibrationTableView setDelegate:self];
     [calibrationTableView setDataSource:self];
+    
+    Utils *utils = [[[Utils alloc] init] autorelease];
+    NSArray *buttonsArray = [NSArray arrayWithObjects:spinDownButton, nil];
+    for(UIButton *btn in buttonsArray)
+    {
+        [btn setBackgroundImage:[utils imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[utils imageWithColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]] forState:UIControlStateNormal];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,106 +96,6 @@
     
     [calibrationTableView reloadData];
     
-    /*
-    //Calibration in progress
-    
-    if(appDelegate.btleTrainerManager.targetSpeedKmH == -1)
-        [targetSpeedLabel setText:@"-"];
-    else
-        [targetSpeedLabel setText:[NSString stringWithFormat:@"%0.1f km/h", appDelegate.btleTrainerManager.targetSpeedKmH]];
-    
-    if(appDelegate.btleTrainerManager.targetSpinDownTimeSeconds == -1)
-        [targetSpinDownTimeLabel setText:@"-"];
-    else
-        [targetSpinDownTimeLabel setText:[NSString stringWithFormat:@"%0.3f s", appDelegate.btleTrainerManager.targetSpinDownTimeSeconds]];
-    
-    if(appDelegate.btleTrainerManager.speedKmH == -1)
-        [currentSpeedLabel setText:@"-"];
-    else
-        [currentSpeedLabel setText:[NSString stringWithFormat:@"%0.1f km/h", appDelegate.btleTrainerManager.speedKmH]];
-    
-    if(appDelegate.btleTrainerManager.currentTemperatureDegC == -1)
-        [currentTemperatureLabel setText:@"-"];
-    else
-        [currentTemperatureLabel setText:[NSString stringWithFormat:@"%0.1f °C", appDelegate.btleTrainerManager.currentTemperatureDegC]];
-    
-    
-    if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_NOT_APPLICABLE)
-    {
-        [speedConditionLabel setText:@"Not applicable"];
-        
-        [currentSpeedLabel setTextColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]];
-        [speedConditionLabel setTextColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]];
-    }
-    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_CURRENT_SPEED_TOO_LOW)
-    {
-        [speedConditionLabel setText:@"Current speed too low"];
-        
-        [currentSpeedLabel setTextColor:[UIColor redColor]];
-        [speedConditionLabel setTextColor:[UIColor redColor]];
-    }
-    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_SPEED_OK)
-    {
-        [speedConditionLabel setText:@"Speed OK"];
-        
-        [currentSpeedLabel setTextColor:[UIColor greenColor]];
-        [speedConditionLabel setTextColor:[UIColor greenColor]];
-    }
-    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_RESERVED)
-    {
-        [speedConditionLabel setText:@"Reserved"];
-        
-        [currentSpeedLabel setTextColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]];
-        [speedConditionLabel setTextColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]];
-    }
-    else
-    {
-        [spinDownCalibrationStatusLabel setText:@"-"];
-        
-        [currentSpeedLabel setTextColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]];
-        [speedConditionLabel setTextColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]];
-    }
-    
-    if(appDelegate.btleTrainerManager.spinDownCalibrationStatus == CALIBRATION_STATUS_NOT_REQUESTED)
-    {
-        [spinDownCalibrationStatusLabel setText:@"Not requested"];
-    }
-    else if(appDelegate.btleTrainerManager.spinDownCalibrationStatus == CALIBRATION_STATUS_PENDING)
-    {
-        [spinDownCalibrationStatusLabel setText:@"Pending"];
-    }
-    else
-    {
-        [spinDownCalibrationStatusLabel setText:@"-"];
-    }
-    
-    
-    //Calibration response
-    
-    if(appDelegate.btleTrainerManager.spinDownCalibrationResponse == CALIBRATION_RESPONSE_FAILURE_NOT_ATTEMPTED)
-    {
-        [spinDownCalibrationResponseLabel setText:@"Failure / Not attempted"];
-    }
-    else if(appDelegate.btleTrainerManager.spinDownCalibrationResponse == CALIBRATION_RESPONSE_SUCCESS)
-    {
-        [spinDownCalibrationResponseLabel setText:@"Success"];
-    }
-    else
-    {
-        [spinDownCalibrationResponseLabel setText:@"-"];
-    }
-    
-    
-    if(appDelegate.btleTrainerManager.temperatureResponseDegC == -1)
-        [temperatureResponseLabel setText:@"-"];
-    else
-        [temperatureResponseLabel setText:[NSString stringWithFormat:@"%0.1f °C", appDelegate.btleTrainerManager.temperatureResponseDegC]];
-    
-    
-    if(appDelegate.btleTrainerManager.spinDownTimeResponseSeconds == -1)
-        [spinDownTimeResponseLabel setText:@"-"];
-    else
-        [spinDownTimeResponseLabel setText:[NSString stringWithFormat:@"%0.3f s", appDelegate.btleTrainerManager.spinDownTimeResponseSeconds]];*/
 }
 
 
@@ -391,7 +299,7 @@
                     }
                     else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_SPEED_OK)
                     {
-                        [cell.detailTextLabel setText:@"Speed OK"];
+                        [cell.detailTextLabel setText:@"Stop pedaling and wait for the wheel stop spinning"];
                         [cell.detailTextLabel setTextColor:[UIColor greenColor]];
                     }
                     else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_RESERVED)

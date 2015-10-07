@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Utils : NSObject
 
@@ -16,5 +17,7 @@
 -(NSInteger)getDecimalFromHexa:(NSString *)hexa;
 -(NSString *)getHexaFromBinary:(NSString *)binary;
 -(NSString *)XORBetweenBinary:(NSString *)binary1 andBinary:(NSString *)binary2;
+
+-(UIImage *)imageWithColor:(UIColor *)color;
 
 @end

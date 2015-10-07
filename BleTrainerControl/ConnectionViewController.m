@@ -21,27 +21,6 @@
 
 #define NB_SECTIONS 14
 
-
-#define SECTION_PAGE_1 0
-#define NB_ROWS_SECTION_PAGE_1 5
-#define ROW_PAGE_1_SPIN_DOWN_CALIBRATION_REQUEST_RESPONSE 0
-#define ROW_PAGE_1_ZERO_OFFSET_CALIBRATION_REQUEST_RESPONSE 1
-#define ROW_PAGE_1_TEMPERATURE 2
-#define ROW_PAGE_1_ZERO_OFFSET 3
-#define ROW_PAGE_1_SPIN_DOWN_TIME 4
-
-
-#define SECTION_PAGE_2 1
-#define NB_ROWS_SECTION_PAGE_2 7
-#define ROW_PAGE_2_SPIN_DOWN_CALIBRATION_STATUS 0
-#define ROW_PAGE_2_ZERO_OFFSET_CALIBRATION_STATUS 1
-#define ROW_PAGE_2_CALIBRATION_SPEED_CONDITIONS 2
-#define ROW_PAGE_2_CALIBRATION_TEMPERATURE_CONDITIONS 3
-#define ROW_PAGE_2_CURRENT_TEMPERATURE 4
-#define ROW_PAGE_2_TARGET_SPEED 5
-#define ROW_PAGE_2_TARGET_SPIN_DOWN_TIME 6
-
-
 #define SECTION_PAGE_16 2
 #define NB_ROWS_SECTION_PAGE_16 6
 #define ROW_PAGE_16_EQUIPMENT_TYPE 0
@@ -118,7 +97,19 @@
     
     [dataPagesTableView setDelegate:self];
     [dataPagesTableView setDataSource:self];
+    
+    
+    Utils *utils = [[[Utils alloc] init] autorelease];
+    NSArray *buttonsArray = [NSArray arrayWithObjects:trackResistanceButton, windResistanceButton, basicResistanceButton, targetPowerButton, calibrationButton, requestPage54Button, requestPage55Button, nil];
+    for(UIButton *btn in buttonsArray)
+    {
+        [btn setBackgroundImage:[utils imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateHighlighted];
+        [btn setBackgroundImage:[utils imageWithColor:[UIColor colorWithRed:76./255. green:164./255. blue:223./255. alpha:1.0]] forState:UIControlStateNormal];
+    }
 }
+
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -213,12 +204,6 @@
 {
     switch (section)
     {
-        case SECTION_PAGE_1:
-            return NB_ROWS_SECTION_PAGE_1;
-            break;
-        case SECTION_PAGE_2:
-            return NB_ROWS_SECTION_PAGE_2;
-            break;
         case SECTION_PAGE_16:
             return NB_ROWS_SECTION_PAGE_16;
             break;
@@ -259,12 +244,6 @@
 {
     switch (section)
     {
-        case SECTION_PAGE_1:
-            return @"Page 1 - Calibration request and response";
-            break;
-        case SECTION_PAGE_2:
-            return @"Page 2 - Calibration in progress";
-            break;
         case SECTION_PAGE_16:
             return @"Page 16 - General FE data";
             break;
@@ -365,156 +344,6 @@
     
     switch (indexPath.section)
     {
-        case SECTION_PAGE_1:
-        {
-            switch (indexPath.row)
-            {
-                case ROW_PAGE_1_SPIN_DOWN_CALIBRATION_REQUEST_RESPONSE:
-                {
-                    [cell.textLabel setText:@"Spin-down calibration request/response"];
-                    
-                    if(appDelegate.btleTrainerManager.spinDownCalibrationResponse == CALIBRATION_RESPONSE_FAILURE_NOT_ATTEMPTED)
-                        [cell.detailTextLabel setText:@"Failure / Not attempted"];
-                    else if(appDelegate.btleTrainerManager.spinDownCalibrationResponse == CALIBRATION_RESPONSE_SUCCESS)
-                        [cell.detailTextLabel setText:@"Success"];
-                    else
-                        [cell.detailTextLabel setText:@"-"];
-                }
-                    break;
-                case ROW_PAGE_1_ZERO_OFFSET_CALIBRATION_REQUEST_RESPONSE:
-                {
-                    [cell.textLabel setText:@"Zero offset calibration request/response"];
-                    
-                    if(appDelegate.btleTrainerManager.zeroOffsetCalibrationResponse == CALIBRATION_RESPONSE_FAILURE_NOT_ATTEMPTED)
-                        [cell.detailTextLabel setText:@"Failure / Not attempted"];
-                    else if(appDelegate.btleTrainerManager.zeroOffsetCalibrationResponse == CALIBRATION_RESPONSE_SUCCESS)
-                        [cell.detailTextLabel setText:@"Success"];
-                    else
-                        [cell.detailTextLabel setText:@"-"];
-                }
-                    break;
-                case ROW_PAGE_1_TEMPERATURE:
-                {
-                    [cell.textLabel setText:@"Temperature"];
-                    
-                    if(appDelegate.btleTrainerManager.temperatureResponseDegC == -1)
-                        [cell.detailTextLabel setText:@"-"];
-                    else
-                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.1f °C", appDelegate.btleTrainerManager.temperatureResponseDegC]];
-                }
-                    break;
-                case ROW_PAGE_1_ZERO_OFFSET:
-                {
-                    [cell.textLabel setText:@"Zero offset"];
-                    
-                    if(appDelegate.btleTrainerManager.spinDownTimeResponseSeconds == -1)
-                        [cell.detailTextLabel setText:@"-"];
-                    else
-                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%li", (long)appDelegate.btleTrainerManager.zeroOffsetResponse]];
-                }
-                    break;
-                case ROW_PAGE_1_SPIN_DOWN_TIME:
-                {
-                    [cell.textLabel setText:@"Spin down time"];
-                    
-                    if(appDelegate.btleTrainerManager.spinDownTimeResponseSeconds == -1)
-                        [cell.detailTextLabel setText:@"-"];
-                    else
-                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.3f s", appDelegate.btleTrainerManager.spinDownTimeResponseSeconds]];
-                }
-                    break;
-                default:
-                    break;
-            }
-        }
-            break;
-        case SECTION_PAGE_2:
-        {
-            switch (indexPath.row)
-            {
-                case ROW_PAGE_2_SPIN_DOWN_CALIBRATION_STATUS:
-                {
-                    [cell.textLabel setText:@"Spin-down calibration status"];
-                    
-                    if(appDelegate.btleTrainerManager.spinDownCalibrationStatus == CALIBRATION_STATUS_NOT_REQUESTED)
-                        [cell.detailTextLabel setText:@"Not requested"];
-                    else if(appDelegate.btleTrainerManager.spinDownCalibrationStatus == CALIBRATION_STATUS_PENDING)
-                        [cell.detailTextLabel setText:@"Pending"];
-                }
-                    break;
-                case ROW_PAGE_2_ZERO_OFFSET_CALIBRATION_STATUS:
-                {
-                    [cell.textLabel setText:@"Zero offset calibration status"];
-                    
-                    if(appDelegate.btleTrainerManager.zeroOffsetCalibrationStatus == CALIBRATION_STATUS_NOT_REQUESTED)
-                        [cell.detailTextLabel setText:@"Not requested"];
-                    else if(appDelegate.btleTrainerManager.zeroOffsetCalibrationStatus == CALIBRATION_STATUS_PENDING)
-                        [cell.detailTextLabel setText:@"Pending"];
-                }
-                    break;
-                case ROW_PAGE_2_CALIBRATION_SPEED_CONDITIONS:
-                {
-                    [cell.textLabel setText:@"Speed conditions"];
-                    
-                    if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_NOT_APPLICABLE)
-                        [cell.detailTextLabel setText:@"Not applicable"];
-                    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_CURRENT_SPEED_TOO_LOW)
-                        [cell.detailTextLabel setText:@"Current speed too low"];
-                    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_SPEED_OK)
-                        [cell.detailTextLabel setText:@"Speed OK"];
-                    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_RESERVED)
-                        [cell.detailTextLabel setText:@"Reserved"];
-                }
-                    break;
-                case ROW_PAGE_2_CALIBRATION_TEMPERATURE_CONDITIONS:
-                {
-                    [cell.textLabel setText:@"Temperature conditions"];
-                    
-                    if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_NOT_APPLICABLE)
-                        [cell.detailTextLabel setText:@"Not applicable"];
-                    else if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_CURRENT_TEMPERATURE_TOO_LOW)
-                        [cell.detailTextLabel setText:@"Current temperature too low"];
-                    else if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_TEMPERATURE_OK)
-                        [cell.detailTextLabel setText:@"Temperature OK"];
-                    else if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_CURRENT_TEMPERATURE_TOO_HIGH)
-                        [cell.detailTextLabel setText:@"Current temperature too high"];
-                }
-                    break;
-                case ROW_PAGE_2_CURRENT_TEMPERATURE:
-                {
-                    [cell.textLabel setText:@"Current temperature"];
-                    
-                    if(appDelegate.btleTrainerManager.currentTemperatureDegC == -1)
-                        [cell.detailTextLabel setText:@"-"];
-                    else
-                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.1f °C", appDelegate.btleTrainerManager.currentTemperatureDegC]];
-                }
-                    break;
-                case ROW_PAGE_2_TARGET_SPEED:
-                {
-                    [cell.textLabel setText:@"Target speed"];
-                    
-                    if(appDelegate.btleTrainerManager.targetSpeedKmH == -1)
-                        [cell.detailTextLabel setText:@"-"];
-                    else
-                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.1f km/h", appDelegate.btleTrainerManager.targetSpeedKmH]];
-                }
-                    break;
-                case ROW_PAGE_2_TARGET_SPIN_DOWN_TIME:
-                {
-                    [cell.textLabel setText:@"Target spin down time"];
-                    
-                    if(appDelegate.btleTrainerManager.targetSpinDownTimeSeconds == -1)
-                        [cell.detailTextLabel setText:@"-"];
-                    else
-                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.3f s", appDelegate.btleTrainerManager.targetSpinDownTimeSeconds]];
-                }
-                    break;
-                default:
-                    break;
-            }
-        }
-            break;
         case SECTION_PAGE_16:
         {
             switch (indexPath.row)
@@ -614,7 +443,7 @@
                     break;
                 case ROW_PAGE_25_INSTANTANEOUS_POWER:
                 {
-                    [cell.textLabel setText:@"instantaneous power"];
+                    [cell.textLabel setText:@"Instantaneous power"];
                     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%li W", (long)appDelegate.btleTrainerManager.powerW]];
                 }
                     break;
@@ -872,24 +701,6 @@
 
 
 //Request page
--(IBAction)requestPage1:(id)sender
-{
-    if(appDelegate.btleTrainerManager.isConnected == TRUE)
-        [appDelegate.btleTrainerManager sendRequestPage:1];
-}
-
--(IBAction)requestPage2:(id)sender
-{
-    if(appDelegate.btleTrainerManager.isConnected == TRUE)
-        [appDelegate.btleTrainerManager sendRequestPage:2];
-}
-
--(IBAction)requestPage17:(id)sender
-{
-    if(appDelegate.btleTrainerManager.isConnected == TRUE)
-        [appDelegate.btleTrainerManager sendRequestPage:17];
-}
-
 -(IBAction)requestPage54:(id)sender
 {
     if(appDelegate.btleTrainerManager.isConnected == TRUE)

@@ -7,9 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionViewController">
             <connections>
+                <outlet property="basicResistanceButton" destination="zQf-6V-aMx" id="3pm-bq-WVK"/>
+                <outlet property="calibrationButton" destination="jjM-Gy-4Ct" id="xdg-RR-FjD"/>
                 <outlet property="dataPagesTableView" destination="DaB-6u-oP7" id="UHt-Gm-4Gr"/>
+                <outlet property="requestPage54Button" destination="dyj-Cq-tZP" id="2SE-Sc-LjL"/>
+                <outlet property="requestPage55Button" destination="ECe-ki-NoF" id="Qo8-L1-aNN"/>
                 <outlet property="statusValueLabel" destination="mQq-ET-A4d" id="7gt-sj-LW3"/>
+                <outlet property="targetPowerButton" destination="Ql4-gN-cM7" id="5Ee-kS-sRj"/>
+                <outlet property="trackResistanceButton" destination="wIO-G0-8rc" id="XyY-CY-iJW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="AlM-iX-NE2"/>
+                <outlet property="windResistanceButton" destination="F4q-TW-uql" id="BNf-GX-APd"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,64 +31,16 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dwO-Av-ov2">
-                    <rect key="frame" x="29" y="186" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.29803921570000003" green="0.64313725489999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="1">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="requestPage1:" destination="-1" eventType="touchUpInside" id="Ga4-C9-poX"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0c1-6e-fFN">
-                    <rect key="frame" x="83" y="186" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.29803921570000003" green="0.64313725489999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="2">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="requestPage2:" destination="-1" eventType="touchUpInside" id="PrZ-td-izy"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lcv-GO-8IS">
-                    <rect key="frame" x="137" y="186" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.29803921570000003" green="0.64313725489999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="17">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="requestPage17:" destination="-1" eventType="touchUpInside" id="V6w-EV-QCk"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dyj-Cq-tZP">
-                    <rect key="frame" x="191" y="186" width="46" height="30"/>
+                    <rect key="frame" x="8" y="186" width="150" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.29803921570000003" green="0.64313725489999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="54">
+                    <state key="normal" title="54-FE capabilities">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="requestPage54:" destination="-1" eventType="touchUpInside" id="NT6-iR-fYg"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ECe-ki-NoF">
-                    <rect key="frame" x="245" y="186" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.29803921570000003" green="0.64313725489999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="55">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="requestPage55:" destination="-1" eventType="touchUpInside" id="Q6J-pA-sBb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zQf-6V-aMx">
@@ -161,6 +120,18 @@
                     </state>
                     <connections>
                         <action selector="onCalibration:" destination="-1" eventType="touchUpInside" id="d5z-9u-IL6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ECe-ki-NoF">
+                    <rect key="frame" x="161" y="186" width="153" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.29803921570000003" green="0.64313725489999995" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="55-User configuration">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="requestPage55:" destination="-1" eventType="touchUpInside" id="Q6J-pA-sBb"/>
                     </connections>
                 </button>
             </subviews>

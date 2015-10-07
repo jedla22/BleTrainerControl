@@ -32,6 +32,16 @@
     IBOutlet UILabel *statusValueLabel;
     
     BOOL isDisplayingModalView;
+    
+    IBOutlet UIButton *basicResistanceButton;
+    IBOutlet UIButton *targetPowerButton;
+    IBOutlet UIButton *windResistanceButton;
+    IBOutlet UIButton *trackResistanceButton;
+    
+    IBOutlet UIButton *calibrationButton;
+    
+    IBOutlet UIButton *requestPage54Button;
+    IBOutlet UIButton *requestPage55Button;
 }
 
 @property (nonatomic, retain) CBPeripheral *peripheralSelected;
@@ -45,9 +55,6 @@
 -(IBAction)onCalibration:(id)sender;
 
 
--(IBAction)requestPage1:(id)sender;
--(IBAction)requestPage2:(id)sender;
--(IBAction)requestPage17:(id)sender;
 -(IBAction)requestPage54:(id)sender;
 -(IBAction)requestPage55:(id)sender;
 

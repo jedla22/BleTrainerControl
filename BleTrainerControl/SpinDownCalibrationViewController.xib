@@ -7,17 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpinDownCalibrationViewController">
             <connections>
-                <outlet property="calibrationTableView" destination="zbd-u9-PCb" id="EYn-yH-r3R"/>
-                <outlet property="currentSpeedLabel" destination="iMv-HH-PxS" id="LOc-uT-7ra"/>
-                <outlet property="currentTemperatureLabel" destination="AoL-4K-oj8" id="Gvv-QJ-IT9"/>
-                <outlet property="speedConditionLabel" destination="QfD-DC-P9r" id="HwI-RD-JqF"/>
+                <outlet property="calibrationTableView" destination="zbd-u9-PCb" id="rQ5-pA-kaF"/>
                 <outlet property="spinDownButton" destination="hot-aq-Jgj" id="dAP-Vl-yEY"/>
-                <outlet property="spinDownCalibrationResponseLabel" destination="3G1-hP-isA" id="E6c-68-NXt"/>
-                <outlet property="spinDownCalibrationStatusLabel" destination="8KV-lD-sbZ" id="hTp-qI-tdi"/>
-                <outlet property="spinDownTimeResponseLabel" destination="dF5-pZ-6on" id="4xu-Mu-QqX"/>
-                <outlet property="targetSpeedLabel" destination="kfP-HL-Vev" id="iaQ-Jc-Pez"/>
-                <outlet property="targetSpinDownTimeLabel" destination="btk-t9-Bvq" id="aa8-wK-DKv"/>
-                <outlet property="temperatureResponseLabel" destination="fmm-b0-tLq" id="1GG-2Q-168"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
