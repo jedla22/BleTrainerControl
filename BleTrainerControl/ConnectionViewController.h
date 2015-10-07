@@ -15,7 +15,7 @@
 #import "WindResistanceViewController.h"
 #import "TrackResistanceViewController.h"
 
-#import "CalibrationViewController.h"
+#import "SpinDownCalibrationViewController.h"
 
 @class AppDelegate;
 

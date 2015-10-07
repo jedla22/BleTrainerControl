@@ -46,40 +46,6 @@
     btleTrainerManager = [[BTLETrainerManager alloc] init];
     
     
-    /*
-     NSString *b0 = @"A4"; //Sync
-     NSString *b1 = @"09";
-     NSString *b2 = @"4E";
-     NSString *b3 = @"05";
-     NSString *b4 = @"19";
-     NSString *b5 = @"49";
-     NSString *b6 = @"00";
-     NSString *b7 = @"3D";
-     NSString *b8 = @"00";
-     NSString *b9 = @"00";
-     NSString *b10 = @"60";
-     NSString *b11 = @"20";
-     NSString *b12 = @"CB"; //Checksum
-     
-     NSArray *array = [NSArray arrayWithObjects:b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, nil];
-     
-     
-     Utils *utils = [[[Utils alloc] init] autorelease];
-     NSString *xorBinary = nil;
-     for(NSInteger i = 1; i < [array count]; i++)
-     {
-     NSString *binary = [utils getBinaryFromHexa:[array objectAtIndex:i]];
-     
-     NSString *previousBinary = nil;
-     if(xorBinary != nil)
-     previousBinary = xorBinary;
-     else
-     previousBinary = [utils getBinaryFromHexa:[array objectAtIndex:i - 1]];
-     
-     xorBinary = [utils XORBetweenBinary:previousBinary andBinary:binary];
-     }
-     NSLog(@"%@ - %@ - %li", xorBinary, [utils getHexaFromBinary:xorBinary], (long)[utils getDecimalFromBinary:xorBinary]);
-     */
     
     return YES;
 }

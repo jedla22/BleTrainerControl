@@ -17,8 +17,8 @@
 		C78700C11BB2D6EC007BC635 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78700BC1BB2D6EC007BC635 /* ConnectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C78700C21BB2D6EC007BC635 /* ConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78700BD1BB2D6EC007BC635 /* ConnectionViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C78700C31BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78700BE1BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib */; settings = {ASSET_TAGS = (); }; };
-		C7D6ACD11BB2D79F0002EB58 /* CalibrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACCF1BB2D79F0002EB58 /* CalibrationViewController.m */; settings = {ASSET_TAGS = (); }; };
-		C7D6ACD21BB2D79F0002EB58 /* CalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACD01BB2D79F0002EB58 /* CalibrationViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACD11BB2D79F0002EB58 /* SpinDownCalibrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACCF1BB2D79F0002EB58 /* SpinDownCalibrationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C7D6ACD21BB2D79F0002EB58 /* SpinDownCalibrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACD01BB2D79F0002EB58 /* SpinDownCalibrationViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C7D6ACD61BB2D7A60002EB58 /* BasicResistanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACD41BB2D7A60002EB58 /* BasicResistanceViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C7D6ACD71BB2D7A60002EB58 /* BasicResistanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D6ACD51BB2D7A60002EB58 /* BasicResistanceViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C7D6ACDB1BB2D7AD0002EB58 /* TargetPowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6ACD91BB2D7AD0002EB58 /* TargetPowerViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -68,9 +68,9 @@
 		C78700BC1BB2D6EC007BC635 /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
 		C78700BD1BB2D6EC007BC635 /* ConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController.xib; sourceTree = "<group>"; };
 		C78700BE1BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionViewController_iPhone.xib; sourceTree = "<group>"; };
-		C7D6ACCE1BB2D79F0002EB58 /* CalibrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationViewController.h; sourceTree = "<group>"; };
-		C7D6ACCF1BB2D79F0002EB58 /* CalibrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationViewController.m; sourceTree = "<group>"; };
-		C7D6ACD01BB2D79F0002EB58 /* CalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationViewController.xib; sourceTree = "<group>"; };
+		C7D6ACCE1BB2D79F0002EB58 /* SpinDownCalibrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinDownCalibrationViewController.h; sourceTree = "<group>"; };
+		C7D6ACCF1BB2D79F0002EB58 /* SpinDownCalibrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinDownCalibrationViewController.m; sourceTree = "<group>"; };
+		C7D6ACD01BB2D79F0002EB58 /* SpinDownCalibrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinDownCalibrationViewController.xib; sourceTree = "<group>"; };
 		C7D6ACD31BB2D7A60002EB58 /* BasicResistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicResistanceViewController.h; sourceTree = "<group>"; };
 		C7D6ACD41BB2D7A60002EB58 /* BasicResistanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicResistanceViewController.m; sourceTree = "<group>"; };
 		C7D6ACD51BB2D7A60002EB58 /* BasicResistanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicResistanceViewController.xib; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 		C7D6ACC81BB2D74D0002EB58 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				C7D6ACCD1BB2D78E0002EB58 /* Calibration */,
+				C7D6ACCD1BB2D78E0002EB58 /* Spin-down Calibration */,
 				C7D6ACCC1BB2D7850002EB58 /* Basic resistance */,
 				C7D6ACCB1BB2D77E0002EB58 /* Target power */,
 				C7D6ACCA1BB2D7760002EB58 /* Wind resistance */,
@@ -222,14 +222,14 @@
 			name = "Basic resistance";
 			sourceTree = "<group>";
 		};
-		C7D6ACCD1BB2D78E0002EB58 /* Calibration */ = {
+		C7D6ACCD1BB2D78E0002EB58 /* Spin-down Calibration */ = {
 			isa = PBXGroup;
 			children = (
-				C7D6ACCE1BB2D79F0002EB58 /* CalibrationViewController.h */,
-				C7D6ACCF1BB2D79F0002EB58 /* CalibrationViewController.m */,
-				C7D6ACD01BB2D79F0002EB58 /* CalibrationViewController.xib */,
+				C7D6ACCE1BB2D79F0002EB58 /* SpinDownCalibrationViewController.h */,
+				C7D6ACCF1BB2D79F0002EB58 /* SpinDownCalibrationViewController.m */,
+				C7D6ACD01BB2D79F0002EB58 /* SpinDownCalibrationViewController.xib */,
 			);
-			name = Calibration;
+			name = "Spin-down Calibration";
 			sourceTree = "<group>";
 		};
 		C7D6ACE71BB2D7CB0002EB58 /* BTLE */ = {
@@ -379,7 +379,7 @@
 				C7D6ACE11BB2D7B30002EB58 /* WindResistanceViewController.xib in Resources */,
 				C78700951BB2D68C007BC635 /* LaunchScreen.storyboard in Resources */,
 				C78700C01BB2D6EC007BC635 /* ViewController.xib in Resources */,
-				C7D6ACD21BB2D79F0002EB58 /* CalibrationViewController.xib in Resources */,
+				C7D6ACD21BB2D79F0002EB58 /* SpinDownCalibrationViewController.xib in Resources */,
 				C78700C31BB2D6EC007BC635 /* ConnectionViewController_iPhone.xib in Resources */,
 				C78700921BB2D68C007BC635 /* Assets.xcassets in Resources */,
 			);
@@ -413,7 +413,7 @@
 				C78700C11BB2D6EC007BC635 /* ConnectionViewController.m in Sources */,
 				C7D6ACD61BB2D7A60002EB58 /* BasicResistanceViewController.m in Sources */,
 				C7D6ACE51BB2D7C00002EB58 /* TrackResistanceViewController.m in Sources */,
-				C7D6ACD11BB2D79F0002EB58 /* CalibrationViewController.m in Sources */,
+				C7D6ACD11BB2D79F0002EB58 /* SpinDownCalibrationViewController.m in Sources */,
 				C78700BF1BB2D6EC007BC635 /* ViewController.m in Sources */,
 				C7D6ACF41BB2D84C0002EB58 /* BTLETrainerManager.m in Sources */,
 				C7D6ACE01BB2D7B30002EB58 /* WindResistanceViewController.m in Sources */,
@@ -549,7 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = BleTrainerControl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -563,7 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = BleTrainerControl/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

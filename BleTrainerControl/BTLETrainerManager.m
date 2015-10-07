@@ -10,6 +10,12 @@
 
 @implementation BTLETrainerManager
 
+@synthesize calibrationStarted;
+
+//Page 1
+@synthesize zeroOffsetCalibrationResponse, zeroOffsetResponse, spinDownCalibrationResponse, spinDownTimeResponseSeconds, temperatureResponseDegC;
+//Page 2
+@synthesize zeroOffsetCalibrationStatus, speedCondition, spinDownCalibrationStatus, temperatureCondition, targetSpinDownTimeSeconds, targetSpeedKmH, currentTemperatureDegC;
 //Page 16
 @synthesize equipmentTypeString, equipmentType, elapsedTimeSeconds, speedKmH, distanceTraveledMeters, heartRateBPM, virtualSpeed;
 //Page 17
@@ -46,6 +52,8 @@
         [manager setBtleManagerDelegate:self];
         
         utils = [[Utils alloc] init];
+        
+        [self resetAllData];
     }
     
     return self;
@@ -60,7 +68,7 @@
 -(void)startScanning
 {
     //Scan for primary service of cycleops powerbeam bluetooth
-    [manager startScanningWithServicesUUIDArray:[NSArray arrayWithObject:[CBUUID UUIDWithString:TACX_FEC_PRIMARY_SERVICE]]];
+    [manager startScanningWithServicesUUIDArray:[NSArray arrayWithObjects:[CBUUID UUIDWithString:TACX_FEC_PRIMARY_SERVICE], [CBUUID UUIDWithString:TACX_VORTEX_PRIMARY_SERVICE], nil]];
 }
 
 -(void)stopScanning
@@ -83,6 +91,24 @@
 
 -(void)resetAllData
 {
+    calibrationStarted = FALSE;
+    
+    //Page 1
+    zeroOffsetCalibrationResponse = -1;
+    spinDownCalibrationResponse = -1;
+    temperatureResponseDegC = -1;
+    zeroOffsetResponse = -1;
+    spinDownTimeResponseSeconds = -1;
+    
+    //Page 2
+    zeroOffsetCalibrationStatus = -1;
+    spinDownCalibrationStatus = -1;
+    temperatureCondition = -1;
+    speedCondition = -1;
+    currentTemperatureDegC = -1;
+    targetSpeedKmH = -1;
+    targetSpinDownTimeSeconds = -1;
+    
     //Page 16
     elapsedTimeSeconds = 0.0;
     distanceTraveledMeters = 0;
@@ -264,13 +290,85 @@
                                 //Page 1 ==> Calibration request and response
                                 if(pageNumber == 1)
                                 {
+                                    calibrationStarted = FALSE;
+                                    
+                                    //Page 2
+                                    zeroOffsetCalibrationStatus = -1;
+                                    spinDownCalibrationStatus = -1;
+                                    temperatureCondition = -1;
+                                    speedCondition = -1;
+                                    currentTemperatureDegC = -1;
+                                    targetSpeedKmH = -1;
+                                    targetSpinDownTimeSeconds = -1;
+                                    
+                                    //Calibration response
+                                    NSString *calibrationResponseHexaString = [dataHexString substringWithRange:NSMakeRange(2, 2)];
+                                    NSString *calibrationResponseBinaryString = [utils getBinaryFromHexa:calibrationResponseHexaString];
+                                    spinDownCalibrationResponse = [[calibrationResponseBinaryString substringWithRange:NSMakeRange(0, 1)] integerValue];
+                                    zeroOffsetCalibrationResponse = [[calibrationResponseBinaryString substringWithRange:NSMakeRange(1, 1)] integerValue];
+                                    
+                                    //Temperature response
+                                    NSString *temperatureResponseHexaString = [dataHexString substringWithRange:NSMakeRange(6, 2)];
+                                    if([temperatureResponseHexaString isEqualToString:@"FF"])
+                                        temperatureResponseDegC = -1;
+                                    else
+                                        temperatureResponseDegC = [utils getDecimalFromHexa:temperatureResponseHexaString] * 0.5 - 25.0;
+                                    
+                                    //Zero offset response
+                                    NSString *zeroOffsetResponseHexaString = [NSString stringWithFormat:@"%@%@", [dataHexString substringWithRange:NSMakeRange(10, 2)], [dataHexString substringWithRange:NSMakeRange(8, 2)]];
+                                    if([zeroOffsetResponseHexaString isEqualToString:@"FFFF"])
+                                        zeroOffsetResponse = -1;
+                                    else
+                                        zeroOffsetResponse = [utils getDecimalFromHexa:zeroOffsetResponseHexaString];
+                                    
+                                    //Spin down time response
+                                    NSString *spinDownTimeResponseHexaString = [NSString stringWithFormat:@"%@%@", [dataHexString substringWithRange:NSMakeRange(14, 2)], [dataHexString substringWithRange:NSMakeRange(12, 2)]];
+                                    if([spinDownTimeResponseHexaString isEqualToString:@"FFFF"])
+                                        spinDownTimeResponseSeconds = -1;
+                                    else
+                                        spinDownTimeResponseSeconds = [utils getDecimalFromHexa:spinDownTimeResponseHexaString];
+                                    
                                     
                                 }
                                 
                                 //Page 2 ==> Calibration in progress
                                 if(pageNumber == 2)
                                 {
+                                    //Calibration status
+                                    NSString *calibrationStatusHexaString = [dataHexString substringWithRange:NSMakeRange(2, 2)];
+                                    NSString *calibrationStatusBinaryString = [utils getBinaryFromHexa:calibrationStatusHexaString];
+                                    spinDownCalibrationStatus = [[calibrationStatusBinaryString substringWithRange:NSMakeRange(0, 1)] integerValue];
+                                    zeroOffsetCalibrationStatus = [[calibrationStatusBinaryString substringWithRange:NSMakeRange(1, 1)] integerValue];
                                     
+                                    
+                                    //Calibration conditions
+                                    NSString *calibrationConditionsHexaString = [dataHexString substringWithRange:NSMakeRange(4, 2)];
+                                    NSString *calibrationConditionsBinaryString = [utils getBinaryFromHexa:calibrationConditionsHexaString];
+                                    speedCondition = [[calibrationConditionsBinaryString substringWithRange:NSMakeRange(0, 2)] integerValue];
+                                    temperatureCondition = [[calibrationConditionsBinaryString substringWithRange:NSMakeRange(2, 2)] integerValue];
+                                    
+                                    
+                                    //Current temperature
+                                    NSString *currentTemperatureHexaString = [dataHexString substringWithRange:NSMakeRange(6, 2)];
+                                    if([currentTemperatureHexaString isEqualToString:@"FF"])
+                                        currentTemperatureDegC = -1;
+                                    else
+                                        currentTemperatureDegC = [utils getDecimalFromHexa:currentTemperatureHexaString] * 0.5 - 25.0;
+                                    
+                                    //Target speed
+                                    NSString *targetSpeedHexaString = [NSString stringWithFormat:@"%@%@", [dataHexString substringWithRange:NSMakeRange(10, 2)], [dataHexString substringWithRange:NSMakeRange(8, 2)]];
+                                    if([targetSpeedHexaString isEqualToString:@"FFFF"])
+                                        targetSpeedKmH = -1;
+                                    else
+                                        targetSpeedKmH = [utils getDecimalFromHexa:targetSpeedHexaString] * 0.001 * 3.6;
+                                    
+                                    //Target spin-don time
+                                    NSString *targetSpinDownHexaString = [NSString stringWithFormat:@"%@%@", [dataHexString substringWithRange:NSMakeRange(14, 2)], [dataHexString substringWithRange:NSMakeRange(12, 2)]];
+                                    if([targetSpinDownHexaString isEqualToString:@"FFFF"])
+                                        targetSpinDownTimeSeconds = -1;
+                                    else
+                                        targetSpinDownTimeSeconds = [utils getDecimalFromHexa:targetSpinDownHexaString] / 1000.0;
+                                        
                                 }
                                 
                                 //Page 16 ==> General FE data page
@@ -827,6 +925,65 @@
     //Write data for the main characteristic
     [manager writeValue:valData toCharacteristicUUIDString:TACX_FEC_WRITE_CHARACTERISTIC];
 }
+
+
+
+
+
+-(void)sendCalibrationRequestForSpinDown:(BOOL)forSpinDown forZeroOffset:(BOOL)forZeroOffset
+{
+    calibrationStarted = TRUE;
+    
+    //Page 1
+    zeroOffsetCalibrationResponse = -1;
+    spinDownCalibrationResponse = -1;
+    temperatureResponseDegC = -1;
+    zeroOffsetResponse = -1;
+    spinDownTimeResponseSeconds = -1;
+    
+    NSInteger calibrationRequestMode = 0;
+    if(forSpinDown == TRUE)
+        calibrationRequestMode += 128;
+    if(forZeroOffset == TRUE)
+        calibrationRequestMode += 64;
+    
+    //Command to send
+    unsigned char bytes[13] = {};
+    bytes[0] = 0xA4; //Sync
+    bytes[1] = 0x09; //Length
+    bytes[2] = 0x4F; //Acknowledge message type
+    bytes[3] = 0x05; //Channel
+    
+    //Data
+    bytes[4] = 0x01; //Page 1
+    bytes[5] = calibrationRequestMode; //Calibration request
+    bytes[6] = 0x00;
+    bytes[7] = 0xFF;
+    bytes[8] = 0xFF;
+    bytes[9] = 0xFF;
+    bytes[10] = 0xFF;
+    bytes[11] = 0xFF;
+    
+    //Checksum
+    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
+    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
+    bytes[12] = checksum;
+    
+    
+    //Data value
+    NSData* valData = [NSData dataWithBytes:bytes length:sizeof(bytes)];
+    
+    //Write data for the main characteristic
+    [manager writeValue:valData toCharacteristicUUIDString:TACX_FEC_WRITE_CHARACTERISTIC];
+}
+
+
+
+
+
+
+
+
 
 
 

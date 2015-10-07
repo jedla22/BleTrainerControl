@@ -12,11 +12,48 @@
 
 #import "Utils.h"
 
+//Calibration status
+#define CALIBRATION_STATUS_NOT_REQUESTED 0
+#define CALIBRATION_STATUS_PENDING 1
+
+//Calibration conditions
+#define TEMPERATURE_CONDITION_NOT_APPLICABLE 0
+#define TEMPERATURE_CONDITION_CURRENT_TEMPERATURE_TOO_LOW 1
+#define TEMPERATURE_CONDITION_TEMPERATURE_OK 10
+#define TEMPERATURE_CONDITION_CURRENT_TEMPERATURE_TOO_HIGH 11
+
+#define SPEED_CONDITION_NOT_APPLICABLE 0
+#define SPEED_CONDITION_CURRENT_SPEED_TOO_LOW 1
+#define SPEED_CONDITION_SPEED_OK 10
+#define SPEED_CONDITION_RESERVED 11
+
+//Calibration response
+#define CALIBRATION_RESPONSE_FAILURE_NOT_ATTEMPTED 0
+#define CALIBRATION_RESPONSE_SUCCESS 1
+
 @interface BTLETrainerManager : NSObject <BTLEManagerDelegate>
 {
     BTLEManager *manager;
     
     Utils *utils;
+    
+    BOOL calibrationStarted;
+
+    //Page 1
+    NSInteger zeroOffsetCalibrationResponse;
+    NSInteger spinDownCalibrationResponse;
+    float temperatureResponseDegC;
+    NSInteger zeroOffsetResponse;
+    float spinDownTimeResponseSeconds;
+    
+    //Page 2
+    NSInteger zeroOffsetCalibrationStatus;
+    NSInteger spinDownCalibrationStatus;
+    NSInteger temperatureCondition;
+    NSInteger speedCondition;
+    float currentTemperatureDegC;
+    float targetSpeedKmH;
+    float targetSpinDownTimeSeconds;
     
     //Page 16
     float elapsedTimeSeconds;
@@ -81,6 +118,24 @@
     NSInteger swRevisionMain;
     NSInteger serialNumber;
 }
+
+@property BOOL calibrationStarted;
+
+//Page 1
+@property NSInteger zeroOffsetCalibrationResponse;
+@property NSInteger spinDownCalibrationResponse;
+@property float temperatureResponseDegC;
+@property NSInteger zeroOffsetResponse;
+@property float spinDownTimeResponseSeconds;
+
+//Page 2
+@property NSInteger zeroOffsetCalibrationStatus;
+@property NSInteger spinDownCalibrationStatus;
+@property NSInteger temperatureCondition;
+@property NSInteger speedCondition;
+@property float currentTemperatureDegC;
+@property float targetSpeedKmH;
+@property float targetSpinDownTimeSeconds;
 
 //Page 16
 @property float elapsedTimeSeconds;
@@ -172,5 +227,8 @@
 
 //Request page
 -(void)sendRequestPage:(NSInteger)page;
+
+//Calibration
+-(void)sendCalibrationRequestForSpinDown:(BOOL)forSpinDown forZeroOffset:(BOOL)forZeroOffset;
 
 @end

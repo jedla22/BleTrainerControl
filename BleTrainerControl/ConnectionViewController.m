@@ -23,20 +23,23 @@
 
 
 #define SECTION_PAGE_1 0
-#define NB_ROWS_SECTION_PAGE_1 4
-#define ROW_PAGE_1_CALIBRATION_REQUEST_RESPONSE 0
-#define ROW_PAGE_1_TEMPERATURE 1
-#define ROW_PAGE_1_ZERO_OFFSET 2
-#define ROW_PAGE_1_SPIN_DOWN_TIME 3
+#define NB_ROWS_SECTION_PAGE_1 5
+#define ROW_PAGE_1_SPIN_DOWN_CALIBRATION_REQUEST_RESPONSE 0
+#define ROW_PAGE_1_ZERO_OFFSET_CALIBRATION_REQUEST_RESPONSE 1
+#define ROW_PAGE_1_TEMPERATURE 2
+#define ROW_PAGE_1_ZERO_OFFSET 3
+#define ROW_PAGE_1_SPIN_DOWN_TIME 4
 
 
 #define SECTION_PAGE_2 1
-#define NB_ROWS_SECTION_PAGE_2 5
-#define ROW_PAGE_2_CALIBRATION_STATUS 0
-#define ROW_PAGE_2_CALIBRATION_CONDITIONS 1
-#define ROW_PAGE_2_CURRENT_TEMPERATURE 2
-#define ROW_PAGE_2_TARGET_SPEED 3
-#define ROW_PAGE_2_TARGET_SPIN_DOWN_TIME 4
+#define NB_ROWS_SECTION_PAGE_2 7
+#define ROW_PAGE_2_SPIN_DOWN_CALIBRATION_STATUS 0
+#define ROW_PAGE_2_ZERO_OFFSET_CALIBRATION_STATUS 1
+#define ROW_PAGE_2_CALIBRATION_SPEED_CONDITIONS 2
+#define ROW_PAGE_2_CALIBRATION_TEMPERATURE_CONDITIONS 3
+#define ROW_PAGE_2_CURRENT_TEMPERATURE 4
+#define ROW_PAGE_2_TARGET_SPEED 5
+#define ROW_PAGE_2_TARGET_SPIN_DOWN_TIME 6
 
 
 #define SECTION_PAGE_16 2
@@ -181,6 +184,8 @@
     {
         [statusValueLabel setText:@"Connected"];
         [statusValueLabel setTextColor:[UIColor greenColor]];
+        
+        
     }
     else
     {
@@ -364,28 +369,58 @@
         {
             switch (indexPath.row)
             {
-                case ROW_PAGE_1_CALIBRATION_REQUEST_RESPONSE:
+                case ROW_PAGE_1_SPIN_DOWN_CALIBRATION_REQUEST_RESPONSE:
                 {
-                    [cell.textLabel setText:@"Calibration request/response"];
-                    [cell.detailTextLabel setText:@"-"];
+                    [cell.textLabel setText:@"Spin-down calibration request/response"];
+                    
+                    if(appDelegate.btleTrainerManager.spinDownCalibrationResponse == CALIBRATION_RESPONSE_FAILURE_NOT_ATTEMPTED)
+                        [cell.detailTextLabel setText:@"Failure / Not attempted"];
+                    else if(appDelegate.btleTrainerManager.spinDownCalibrationResponse == CALIBRATION_RESPONSE_SUCCESS)
+                        [cell.detailTextLabel setText:@"Success"];
+                    else
+                        [cell.detailTextLabel setText:@"-"];
+                }
+                    break;
+                case ROW_PAGE_1_ZERO_OFFSET_CALIBRATION_REQUEST_RESPONSE:
+                {
+                    [cell.textLabel setText:@"Zero offset calibration request/response"];
+                    
+                    if(appDelegate.btleTrainerManager.zeroOffsetCalibrationResponse == CALIBRATION_RESPONSE_FAILURE_NOT_ATTEMPTED)
+                        [cell.detailTextLabel setText:@"Failure / Not attempted"];
+                    else if(appDelegate.btleTrainerManager.zeroOffsetCalibrationResponse == CALIBRATION_RESPONSE_SUCCESS)
+                        [cell.detailTextLabel setText:@"Success"];
+                    else
+                        [cell.detailTextLabel setText:@"-"];
                 }
                     break;
                 case ROW_PAGE_1_TEMPERATURE:
                 {
                     [cell.textLabel setText:@"Temperature"];
-                    [cell.detailTextLabel setText:@"-"];
+                    
+                    if(appDelegate.btleTrainerManager.temperatureResponseDegC == -1)
+                        [cell.detailTextLabel setText:@"-"];
+                    else
+                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.1f °C", appDelegate.btleTrainerManager.temperatureResponseDegC]];
                 }
                     break;
                 case ROW_PAGE_1_ZERO_OFFSET:
                 {
                     [cell.textLabel setText:@"Zero offset"];
-                    [cell.detailTextLabel setText:@"-"];
+                    
+                    if(appDelegate.btleTrainerManager.spinDownTimeResponseSeconds == -1)
+                        [cell.detailTextLabel setText:@"-"];
+                    else
+                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%li", (long)appDelegate.btleTrainerManager.zeroOffsetResponse]];
                 }
                     break;
                 case ROW_PAGE_1_SPIN_DOWN_TIME:
                 {
                     [cell.textLabel setText:@"Spin down time"];
-                    [cell.detailTextLabel setText:@"-"];
+                    
+                    if(appDelegate.btleTrainerManager.spinDownTimeResponseSeconds == -1)
+                        [cell.detailTextLabel setText:@"-"];
+                    else
+                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.3f s", appDelegate.btleTrainerManager.spinDownTimeResponseSeconds]];
                 }
                     break;
                 default:
@@ -397,34 +432,82 @@
         {
             switch (indexPath.row)
             {
-                case ROW_PAGE_2_CALIBRATION_STATUS:
+                case ROW_PAGE_2_SPIN_DOWN_CALIBRATION_STATUS:
                 {
-                    [cell.textLabel setText:@"Calibration status"];
-                    [cell.detailTextLabel setText:@"-"];
+                    [cell.textLabel setText:@"Spin-down calibration status"];
+                    
+                    if(appDelegate.btleTrainerManager.spinDownCalibrationStatus == CALIBRATION_STATUS_NOT_REQUESTED)
+                        [cell.detailTextLabel setText:@"Not requested"];
+                    else if(appDelegate.btleTrainerManager.spinDownCalibrationStatus == CALIBRATION_STATUS_PENDING)
+                        [cell.detailTextLabel setText:@"Pending"];
                 }
                     break;
-                case ROW_PAGE_2_CALIBRATION_CONDITIONS:
+                case ROW_PAGE_2_ZERO_OFFSET_CALIBRATION_STATUS:
                 {
-                    [cell.textLabel setText:@"Calibration conditions"];
-                    [cell.detailTextLabel setText:@"-"];
+                    [cell.textLabel setText:@"Zero offset calibration status"];
+                    
+                    if(appDelegate.btleTrainerManager.zeroOffsetCalibrationStatus == CALIBRATION_STATUS_NOT_REQUESTED)
+                        [cell.detailTextLabel setText:@"Not requested"];
+                    else if(appDelegate.btleTrainerManager.zeroOffsetCalibrationStatus == CALIBRATION_STATUS_PENDING)
+                        [cell.detailTextLabel setText:@"Pending"];
+                }
+                    break;
+                case ROW_PAGE_2_CALIBRATION_SPEED_CONDITIONS:
+                {
+                    [cell.textLabel setText:@"Speed conditions"];
+                    
+                    if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_NOT_APPLICABLE)
+                        [cell.detailTextLabel setText:@"Not applicable"];
+                    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_CURRENT_SPEED_TOO_LOW)
+                        [cell.detailTextLabel setText:@"Current speed too low"];
+                    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_SPEED_OK)
+                        [cell.detailTextLabel setText:@"Speed OK"];
+                    else if(appDelegate.btleTrainerManager.speedCondition == SPEED_CONDITION_RESERVED)
+                        [cell.detailTextLabel setText:@"Reserved"];
+                }
+                    break;
+                case ROW_PAGE_2_CALIBRATION_TEMPERATURE_CONDITIONS:
+                {
+                    [cell.textLabel setText:@"Temperature conditions"];
+                    
+                    if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_NOT_APPLICABLE)
+                        [cell.detailTextLabel setText:@"Not applicable"];
+                    else if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_CURRENT_TEMPERATURE_TOO_LOW)
+                        [cell.detailTextLabel setText:@"Current temperature too low"];
+                    else if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_TEMPERATURE_OK)
+                        [cell.detailTextLabel setText:@"Temperature OK"];
+                    else if(appDelegate.btleTrainerManager.temperatureCondition == TEMPERATURE_CONDITION_CURRENT_TEMPERATURE_TOO_HIGH)
+                        [cell.detailTextLabel setText:@"Current temperature too high"];
                 }
                     break;
                 case ROW_PAGE_2_CURRENT_TEMPERATURE:
                 {
                     [cell.textLabel setText:@"Current temperature"];
-                    [cell.detailTextLabel setText:@"-"];
+                    
+                    if(appDelegate.btleTrainerManager.currentTemperatureDegC == -1)
+                        [cell.detailTextLabel setText:@"-"];
+                    else
+                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.1f °C", appDelegate.btleTrainerManager.currentTemperatureDegC]];
                 }
                     break;
                 case ROW_PAGE_2_TARGET_SPEED:
                 {
                     [cell.textLabel setText:@"Target speed"];
-                    [cell.detailTextLabel setText:@"-"];
+                    
+                    if(appDelegate.btleTrainerManager.targetSpeedKmH == -1)
+                        [cell.detailTextLabel setText:@"-"];
+                    else
+                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.1f km/h", appDelegate.btleTrainerManager.targetSpeedKmH]];
                 }
                     break;
                 case ROW_PAGE_2_TARGET_SPIN_DOWN_TIME:
                 {
                     [cell.textLabel setText:@"Target spin down time"];
-                    [cell.detailTextLabel setText:@"-"];
+                    
+                    if(appDelegate.btleTrainerManager.targetSpinDownTimeSeconds == -1)
+                        [cell.detailTextLabel setText:@"-"];
+                    else
+                        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%0.3f s", appDelegate.btleTrainerManager.targetSpinDownTimeSeconds]];
                 }
                     break;
                 default:
@@ -713,34 +796,38 @@
 
 -(IBAction)onBasicResistance:(id)sender
 {
-    BasicResistanceViewController *basicResistanceViewController = [[[BasicResistanceViewController alloc] init] autorelease];
-    //[basicResistanceViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-    //[self presentViewController:basicResistanceViewController animated:TRUE completion:nil];
-    [self openModalWithRootViewlController:basicResistanceViewController];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+    {
+        BasicResistanceViewController *basicResistanceViewController = [[[BasicResistanceViewController alloc] init] autorelease];
+        [self openModalWithRootViewlController:basicResistanceViewController];
+    }
 }
 
 -(IBAction)onTargetPower:(id)sender
 {
-    TargetPowerViewController *targetPowerViewController = [[[TargetPowerViewController alloc] init] autorelease];
-    //[targetPowerViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-    //[self presentViewController:targetPowerViewController animated:TRUE completion:nil];
-    [self openModalWithRootViewlController:targetPowerViewController];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+    {
+        TargetPowerViewController *targetPowerViewController = [[[TargetPowerViewController alloc] init] autorelease];
+        [self openModalWithRootViewlController:targetPowerViewController];
+    }
 }
 
 -(IBAction)onWindResistance:(id)sender
 {
-    WindResistanceViewController *windResistanceViewController = [[[WindResistanceViewController alloc] init] autorelease];
-    //[windResistanceViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-    //[self presentViewController:windResistanceViewController animated:TRUE completion:nil];
-    [self openModalWithRootViewlController:windResistanceViewController];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+    {
+        WindResistanceViewController *windResistanceViewController = [[[WindResistanceViewController alloc] init] autorelease];
+        [self openModalWithRootViewlController:windResistanceViewController];
+    }
 }
 
 -(IBAction)onTrackResistance:(id)sender
 {
-    TrackResistanceViewController *trackResistanceViewController = [[[TrackResistanceViewController alloc] init] autorelease];
-    //[trackResistanceViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-    //[self presentViewController:trackResistanceViewController animated:TRUE completion:nil];
-    [self openModalWithRootViewlController:trackResistanceViewController];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+    {
+        TrackResistanceViewController *trackResistanceViewController = [[[TrackResistanceViewController alloc] init] autorelease];
+        [self openModalWithRootViewlController:trackResistanceViewController];
+    }
 }
 
 
@@ -749,10 +836,11 @@
 //Calibration
 -(IBAction)onCalibration:(id)sender
 {
-    CalibrationViewController *calibrationViewController = [[[CalibrationViewController alloc] init] autorelease];
-    //[calibrationViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-    //[self presentViewController:calibrationViewController animated:TRUE completion:nil];
-    [self openModalWithRootViewlController:calibrationViewController];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+    {
+        SpinDownCalibrationViewController *spinDownCalibrationViewController = [[[SpinDownCalibrationViewController alloc] init] autorelease];
+        [self openModalWithRootViewlController:spinDownCalibrationViewController];
+    }
 }
 
 
@@ -786,27 +874,32 @@
 //Request page
 -(IBAction)requestPage1:(id)sender
 {
-    [appDelegate.btleTrainerManager sendRequestPage:1];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+        [appDelegate.btleTrainerManager sendRequestPage:1];
 }
 
 -(IBAction)requestPage2:(id)sender
 {
-    [appDelegate.btleTrainerManager sendRequestPage:2];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+        [appDelegate.btleTrainerManager sendRequestPage:2];
 }
 
 -(IBAction)requestPage17:(id)sender
 {
-    [appDelegate.btleTrainerManager sendRequestPage:17];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+        [appDelegate.btleTrainerManager sendRequestPage:17];
 }
 
 -(IBAction)requestPage54:(id)sender
 {
-    [appDelegate.btleTrainerManager sendRequestPage:54];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+        [appDelegate.btleTrainerManager sendRequestPage:54];
 }
 
 -(IBAction)requestPage55:(id)sender
 {
-    [appDelegate.btleTrainerManager sendRequestPage:55];
+    if(appDelegate.btleTrainerManager.isConnected == TRUE)
+        [appDelegate.btleTrainerManager sendRequestPage:55];
 }
 
 

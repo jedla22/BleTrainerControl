@@ -123,7 +123,9 @@
 
 -(void)writeValue:(NSData *)data toCharacteristicUUIDString:(NSString *)characteristicUUIDString
 {
-    NSLog(@"Sx : %@", [data description]);
+#ifdef DEBUG
+    NSLog(@"Tx : %@", [data description]);
+#endif
     
     if(peripheralSelected != nil)
     {

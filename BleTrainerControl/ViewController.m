@@ -104,6 +104,13 @@
 
 -(void)startDiscovery
 {
+    //Remove all object from array
+    if(discoveredDeviceArray != nil)
+        [discoveredDeviceArray removeAllObjects];
+    
+    //Reload to clear old results
+    [discoveryTableView reloadData];
+    
     //Discovery state started
     [self updateDiscoveryStateAndButtonWithState:DiscoveryStateStarted];
     
