@@ -1,5 +1,5 @@
 //
-//  TargetPowerViewController.h
+//  CalibrationViewController.h
 //  BleTrainerControl
 //
 //  Created by William Minol on 03/09/2015.
@@ -22,20 +22,14 @@
 
 @class AppDelegate;
 
-@interface TargetPowerViewController : UIViewController
+@interface CalibrationViewController : UIViewController
 {
     AppDelegate *appDelegate;
-    
-    IBOutlet UILabel *targetPowerLabel;
-    IBOutlet UISlider *targetPowerSlider;
-    IBOutlet UILabel *targetPowerValueLabel;
     
     IBOutlet UIButton *sendButton;
 }
 
 -(IBAction)onSendButton:(id)sender;
 -(IBAction)onCloseButton:(id)sender;
-
--(IBAction)onSliderValueChanged:(id)sender;
 
 @end

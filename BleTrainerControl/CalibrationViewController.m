@@ -1,5 +1,5 @@
 //
-//  BasicResistanceViewController.m
+//  CalibrationViewController.m
 //  BleTrainerControl
 //
 //  Created by William Minol on 03/09/2015.
@@ -18,15 +18,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import "BasicResistanceViewController.h"
+#import "CalibrationViewController.h"
 
 #import "AppDelegate.h"
 
-@interface BasicResistanceViewController ()
+@interface CalibrationViewController ()
 
 @end
 
-@implementation BasicResistanceViewController
+@implementation CalibrationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,18 +34,8 @@
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [totalResistanceSlider setMinimumValue:0.0];
-    [totalResistanceSlider setMaximumValue:100.0];
-    
-    //Default values
-    [totalResistanceSlider setValue:0.0];
-    
-    //Display values
-    [self onSliderValueChanged:totalResistanceSlider];
-    
     [self.navigationItem setRightBarButtonItem:[[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(onCloseButton:)] autorelease]];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -59,17 +49,8 @@
 
 -(IBAction)onSendButton:(id)sender
 {
-    //Send total resistance for basic resistance mode
-    float totalResistanceValue = totalResistanceSlider.value;
-    [appDelegate.btleTrainerManager sendBasicResistance:totalResistanceValue];
+    
 }
-
-
--(IBAction)onSliderValueChanged:(id)sender
-{
-    [totalResistanceValueLabel setText:[NSString stringWithFormat:@"%0.0f %%", totalResistanceSlider.value]];
-}
-
 
 /*
 #pragma mark - Navigation
