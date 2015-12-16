@@ -8,6 +8,21 @@
 
 #import "BTLETrainerManager.h"
 
+/**
+ * Extending public interface by "private" methods
+ */
+@interface BTLETrainerManager()
+
+/**
+ * @brief Computation of checksum that is used to validate data message.Checksum is computed by recursively XOR of each single bytes in message with temporary result. At each step XOR is saved to temp result, that is used in next step to be XOR with next message byte.
+ *
+ * @param NSData *data : NSData consrtucted from message bytes (does noe include cheksum byte)
+ * @return NSUInteger : computed checksum (in fact this should be unsigned char)
+ */
+-(NSUInteger)computeChecksum:(NSData *)data;
+
+@end
+
 @implementation BTLETrainerManager
 
 @synthesize calibrationStarted;
@@ -708,10 +723,6 @@
     
 }
 
-
-
-
-
 //Control data pages
 -(void)sendBasicResistance:(float)totalResistancePercentValue
 {
@@ -735,9 +746,7 @@
     bytes[11] = totalResistanceValue; //Total resistance
     
     //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -770,10 +779,8 @@
     bytes[10] = [utils getDecimalFromHexa:[targetPowerValueHexaString substringWithRange:NSMakeRange(2, 2)]]; //Target power LSB
     bytes[11] = [utils getDecimalFromHexa:[targetPowerValueHexaString substringWithRange:NSMakeRange(0, 2)]]; //Target power MSB
     
-    //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+//    //Checksum
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -807,9 +814,7 @@
     bytes[11] = draftingFactValue; //Drafting factor
     
     //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -844,9 +849,7 @@
     bytes[11] = rollingResistanceCoeffValue; //Rolling resistance coefficient
     
     //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -879,9 +882,7 @@
     bytes[11] = 0xFF; //Spin-down time MSB
     
     //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -914,9 +915,7 @@
     bytes[11] = 0x01; //Command type (0x01 for request data page, 0x02 for request ANT-FS session)
     
     //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -965,9 +964,7 @@
     bytes[11] = 0xFF;
     
     //Checksum
-    NSArray *arrayForChecksum = [NSArray arrayWithObjects:[NSNumber numberWithInteger:bytes[0]], [NSNumber numberWithInteger:bytes[1]], [NSNumber numberWithInteger:bytes[2]], [NSNumber numberWithInteger:bytes[3]], [NSNumber numberWithInteger:bytes[4]], [NSNumber numberWithInteger:bytes[5]], [NSNumber numberWithInteger:bytes[6]], [NSNumber numberWithInteger:bytes[7]], [NSNumber numberWithInteger:bytes[8]], [NSNumber numberWithInteger:bytes[9]], [NSNumber numberWithInteger:bytes[10]], [NSNumber numberWithInteger:bytes[11]], nil];
-    NSInteger checksum = [self getChecksumWithArrayOfDecimal:arrayForChecksum];
-    bytes[12] = checksum;
+    bytes[12] = [self computeChecksum:[NSData dataWithBytes:bytes length:12]];
     
     
     //Data value
@@ -977,47 +974,20 @@
     [manager writeValue:valData toCharacteristicUUIDString:TACX_FEC_WRITE_CHARACTERISTIC];
 }
 
-
-
-
-
-
-
-
-
-
-
-//Get checksum
--(NSInteger)getChecksumWithArrayOfDecimal:(NSArray *)decimalsArray
-{
-    NSString *xorBinary = nil;
-    for(NSInteger i = 1; i < [decimalsArray count]; i++)
+-(NSUInteger)computeChecksum:(NSData *)data{
+    NSUInteger xor = 0;
+    const unsigned char *bytes = data.bytes;
+    for(int i = 0; i < data.length; i++)
     {
-        //Decimal value for current decimal
-        NSInteger decimalValue = [[decimalsArray objectAtIndex:i] integerValue];
-        
-        //Get current binary and previous binary for the XOR
-        NSString *binary = [utils getBinaryFromHexa:[NSString stringWithFormat:@"%02lX", (long)decimalValue]];
-        NSString *previousBinary = nil;
-        //If there is a previous binary from a XOR, get it
-        if(xorBinary != nil)
-            previousBinary = xorBinary;
-        else
-        {
-            //Else get binary of previous decimal value
-            NSInteger previousDecimalValue = [[decimalsArray objectAtIndex:i - 1] integerValue];
-            previousBinary = [utils getBinaryFromHexa:[NSString stringWithFormat:@"%02lX", (long)previousDecimalValue]];
+        if (i == 0) {
+            xor = bytes[i];
         }
-        
-        //XOR between the two binaries
-        xorBinary = [utils XORBetweenBinary:previousBinary andBinary:binary];
+        else {
+            xor = (unsigned char)(xor ^ bytes[i]);
+        }
     }
-    
-    //Return decimal for the checksum
-    return [utils getDecimalFromBinary:xorBinary];
+    return xor;
 }
-
-
 
 -(void)dealloc
 {
